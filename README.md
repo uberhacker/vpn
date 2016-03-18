@@ -1,6 +1,8 @@
 ### vpn
 Simple bash shell script to start|stop a vpn session
 
+Currently only works on Debian and derivative distros.  Implements [OpenConnect](http://www.infradead.org/openconnect/).
+
 ### Installation:
 ```
 $ git clone https://github.com/uberhacker/vpn.git
