@@ -1,0 +1,36 @@
+#!/bin/bash
+if test $1; then
+  CMD=$1
+  if [[ $CMD != "start" && $CMD != "stop" ]]; then
+    echo "Usage: $0 start|stop"
+    exit 1
+  fi
+  PKG=$(dpkg -l | grep openconnect)
+  if [ -z "$PKG" ]; then
+    sudo apt-get install openconnect -y
+  fi
+  if [ $CMD == "start" ]; then
+    USER=
+    PASS=
+    AUTHGROUP=
+    URL=
+    PID=$(pidof openconnect)
+    if [ -z "$PID" ]; then
+      echo $PASS | sudo openconnect --user=$USER --authgroup=$AUTHGROUP --no-cert-check -b $URL
+    else
+      echo "openconnect process $PID already running."
+    fi
+    exit 0
+  else
+    PID=$(pidof openconnect)
+    if [ ! -z "$PID" ]; then
+      sudo kill $PID
+    else
+      echo "openconnect process not running."
+    fi
+    exit 0
+  fi
+else
+  echo "Usage: $0 start|stop"
+  exit 1
+fi
