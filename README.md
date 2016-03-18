@@ -1,7 +1,7 @@
-# vpn
+### vpn
 Simple bash shell script to start|stop a vpn session
 
-# Installation:
+### Installation:
 ```
 $ git clone https://github.com/uberhacker/vpn.git
 $ cd vpn
@@ -14,7 +14,7 @@ Save and exit.
 $ chmod +x vpn
 $ sudo cp vpn /usr/local/bin/ (or any directory defined in $PATH)
 ```
-# Usage:
+### Usage:
 ```
 $ vpn start|stop
 ```
